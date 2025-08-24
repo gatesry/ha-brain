@@ -1,9 +1,26 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Environment and config
 .env
+
+# Personal data - NEVER commit these
+context/
 exports/
+personal_info.json
+complete_context_*.md
+
+# IDE files
 *.code-workspace
 .DS_Store
 .vscode/
+.idea/
+
+# Keep templates and examples
+!templates/
+!examples/
 

@@ -67,6 +67,65 @@ python scripts/ha_context_export.py
 
 The export file can now be copied and pasted into any AI chat session!
 
+## 🧠 The 4-File Context System
+
+This tool uses a comprehensive 4-file system to provide AI assistants with complete context:
+
+1. **Boot Instructions** - How you want the AI to interact with you
+2. **Persona** - The AI assistant's personality and behavior
+3. **HA Export** - Your actual Home Assistant configuration
+4. **Personal Info** - Your household details and automation goals
+
+### First Time Setup (15 minutes)
+
+#### Step 1: Generate Your Personal Profile
+```bash
+# Interactive interview to create your household profile
+python scripts/generate_interview.py
+```
+
+#### Step 2: Customize Your Preferences
+```bash
+# Copy templates to your context folder
+cp templates/1_boot_instructions.md context/
+cp templates/2_persona.md context/
+
+# Edit these files to match your preferences
+# Use the examples folder for inspiration
+```
+
+#### Step 3: Export and Combine
+```bash
+# Export your HA configuration
+python scripts/ha_context_export.py
+
+# Combine all 4 files into one
+python scripts/combine_context.py
+```
+
+### Daily Usage (30 seconds)
+```bash
+# Update HA export and combine all context in one command
+python scripts/update_context.py --combine
+
+# The combined file is ready to copy/paste into any AI chat
+```
+
+### What Makes This Special?
+
+Your AI assistant will know:
+- ✅ Your actual device names and capabilities
+- ✅ Your household schedule and routines
+- ✅ Your technical comfort level
+- ✅ Your automation preferences
+- ✅ Your specific goals and pain points
+
+This means you get automations that are:
+- **Ready to use** - no placeholder entity IDs
+- **Personalized** - considers your family's needs
+- **Appropriate** - matches your technical level
+- **Contextual** - understands your home layout
+
 ## 📋 Typical Workflow
 
 1. **Export your HA context** using this tool
@@ -148,12 +207,25 @@ python scripts/ha_call_service.py persistent_notification create \
 ha-brain/
 ├── scripts/                      # Core functionality
 │   ├── common.py                 # Shared HA API client
-│   ├── ha_context_export.py      # Main export tool
+│   ├── ha_context_export.py      # HA configuration exporter
+│   ├── generate_interview.py     # Interactive profile generator
+│   ├── combine_context.py        # Combines all 4 files
+│   ├── update_context.py         # Updates and combines context
 │   ├── ha_test.py                # Connection tester
 │   ├── ha_list_entities.py       # Entity lister
 │   ├── ha_create_notification.py # Safe test action
 │   └── ha_call_service.py        # Generic service caller
-├── exports/                      # Your exports go here (gitignored)
+├── templates/                    # Customizable templates
+│   ├── 1_boot_instructions.md    # AI interaction preferences
+│   ├── 2_persona.md              # AI personality config
+│   └── 4_personal_info.md        # Household information
+├── context/                      # Your personalized files (gitignored)
+│   └── [Your 4 context files]
+├── examples/                     # Example filled templates
+│   ├── boot_instructions_example.md
+│   ├── persona_example.md
+│   └── personal_info_example.md
+├── exports/                      # HA exports and combined files (gitignored)
 ├── .env.example                  # Template for configuration
 ├── requirements.txt              # Python dependencies
 ├── Makefile                      # Convenience commands

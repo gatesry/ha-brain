@@ -46,14 +46,13 @@ cp .env.example .env
 - Local IP: `http://192.168.1.100:8123` 
 - Remote: `https://your-home.duckdns.org:8123`
 
-### 4️⃣ Install & Run (1 minute)
+### 4️⃣ Install & Setup (2 minutes)
 
 **Windows:**
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install requests python-dotenv
-python scripts/ha_context_export.py
 ```
 
 **Mac/Linux:**
@@ -61,23 +60,49 @@ python scripts/ha_context_export.py
 python -m venv .venv
 source .venv/bin/activate
 pip install requests python-dotenv
-python scripts/ha_context_export.py
 ```
 
-### 5️⃣ Success! 🎉
+### 5️⃣ Create Your Profile (5 minutes - First Time Only)
 
-Your export is saved in: `exports/ha_session_context_[timestamp].txt`
+```bash
+# Generate your household profile (interactive)
+python scripts/generate_interview.py
 
-## Using Your Export with AI
+# Copy templates for customization
+cp templates/1_boot_instructions.md context/
+cp templates/2_persona.md context/
 
-1. Open the export file in `exports/` folder
+# Edit the files in context/ folder to match your preferences
+```
+
+### 6️⃣ Export and Combine (30 seconds)
+
+```bash
+# Export HA configuration and combine all 4 files
+python scripts/update_context.py --combine
+```
+
+### 7️⃣ Success! 🎉
+
+Your complete context is saved in: `exports/complete_context_[timestamp].md`
+
+## Using Your Complete Context with AI
+
+1. Open the combined context file in `exports/` folder
 2. Copy ALL contents (Ctrl+A, Ctrl+C)
 3. Start a new ChatGPT or Claude chat
-4. Paste with a message like:
+4. Paste the entire context - the AI will:
+   - Load your preferences and persona
+   - Understand your household details
+   - Use your actual HA device names
+   - Provide personalized automations
 
-> "Here's my Home Assistant setup: [PASTE]
+Example first message:
+> [PASTE YOUR COMPLETE CONTEXT]
 > 
-> Please help me create an automation that turns on my living room lights at sunset only when someone is home."
+> "Please create an automation that turns on my living room lights at sunset only when someone is home."
+
+The AI will respond using your actual entity IDs and considering your household's schedule!
 
 ## Troubleshooting
 

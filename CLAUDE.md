@@ -4,10 +4,39 @@ This file provides guidance to AI assistants (Claude, ChatGPT, etc.) when helpin
 
 ## Repository Purpose
 
-This repository is a **Home Assistant context export tool** designed to:
-1. Export complete HA configuration (entities, services, areas, devices, automations)
-2. Provide this context to AI assistants for better automation suggestions
-3. Enable AI to use actual entity names and device capabilities from the user's setup
+This repository is a **Complete Home Assistant AI Context System** that provides:
+1. **4-File Context System** for comprehensive AI assistant configuration
+2. **Personalized profiles** including household info, preferences, and goals
+3. **HA configuration export** with all entities, services, areas, and automations
+4. **AI behavior customization** through boot instructions and persona settings
+
+## The 4-File System
+
+When users provide their complete context, it includes:
+
+1. **Boot Instructions** (`1_boot_instructions.md`)
+   - How the user wants you to respond
+   - Code formatting preferences
+   - Technical level and explanation depth
+   - Specific dos and don'ts
+
+2. **Persona Configuration** (`2_persona.md`)
+   - Your character and personality
+   - Communication style
+   - Problem-solving approach
+   - Behavioral guidelines
+
+3. **Home Assistant Export** (`3_ha_export.md`)
+   - Complete entity list with states
+   - Available services and parameters
+   - Areas and device relationships
+   - Existing automations
+
+4. **Personal Information** (`4_personal_info.md`)
+   - Household composition and schedules
+   - Dwelling layout and details
+   - Automation goals and pain points
+   - Environmental preferences
 
 ## When Users Provide Exported Context
 
