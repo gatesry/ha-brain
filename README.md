@@ -1,5 +1,7 @@
 # Home Assistant Brain 🧠
 
+Note: if it isn't obvious, this was vibe-coded with Claude Code/ChatGPT. Use with caution
+
 **Export your entire Home Assistant setup to enhance AI-powered automation creation**
 
 A powerful context export tool that captures your complete Home Assistant configuration - entities, services, areas, devices, and automations - into a structured format perfect for pasting into AI chat sessions (ChatGPT, Claude, etc.) to get better, more accurate automation suggestions tailored to your specific setup.
